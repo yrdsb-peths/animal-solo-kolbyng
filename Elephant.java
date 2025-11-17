@@ -17,5 +17,17 @@ public class Elephant extends Actor
         {
             move(1);
         }
+        if(isTouching(Apple.class))
+        {
+            eat();
+        }
+    }
+    
+    public void eat()
+    {
+        MyWorld world = (MyWorld) getWorld();
+        removeTouching(Apple.class);
+        world.createApple();
+        world.increaseScore();
     }
 }
