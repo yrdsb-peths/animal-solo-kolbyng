@@ -17,6 +17,8 @@ public class Apple extends Actor
         {
             myWorld.gameOver();
             world.removeObject(this);
+            Elephant elephant = myWorld.getElephant();
+            elephant.remove();
         }
     }
 }

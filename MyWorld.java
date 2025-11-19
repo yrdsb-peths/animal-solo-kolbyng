@@ -7,10 +7,11 @@ import greenfoot.*;
 public class MyWorld extends World {
     private int score = 0;
     private Label scoreLabel;
+    Elephant e;
     public MyWorld() 
     {
         super(600, 400, 1, false);
-        Elephant e = new Elephant();
+        e = new Elephant();
         addObject(e, 300, 200);
         createApple();
         scoreLabel = new Label(0, 80);
@@ -34,5 +35,10 @@ public class MyWorld extends World {
         Label gameOverLabel = new Label("Game over", 100);
         addObject(gameOverLabel, 300, 200);
         Greenfoot.stop();
+    }
+
+    public Elephant getElephant()
+    {
+        return e;
     }
 }

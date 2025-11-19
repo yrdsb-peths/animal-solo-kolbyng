@@ -30,4 +30,10 @@ public class Elephant extends Actor
         world.createApple();
         world.increaseScore();
     }
+
+    public void remove()
+    {
+        World world = getWorld();
+        world.removeObject(this);
+    }
 }
