@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elephant extends Actor
 {
+    GreenfootSound eatSound = new GreenfootSound("elephantcub.mp3");
     public void act()
     {
         if (Greenfoot.isKeyDown("left"))
@@ -29,6 +30,7 @@ public class Elephant extends Actor
         removeTouching(Apple.class);
         world.createApple();
         world.increaseScore();
+        eatSound.play();
     }
 
     public void remove()
