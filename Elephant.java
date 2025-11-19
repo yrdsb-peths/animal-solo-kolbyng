@@ -7,7 +7,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elephant extends Actor
 {
-    GreenfootSound eatSound = new GreenfootSound("elephantcub.mp3");
+    private GreenfootImage[] elephantAnim= new GreenfootImage[8];
+    private GreenfootSound eatSound = new GreenfootSound("elephantcub.mp3");
+    private int imageIndex = 0;
+
+    public Elephant()
+    {
+        createAnimArray();
+        setImage(elephantAnim[0]);
+    }
+
     public void act()
     {
         if (Greenfoot.isKeyDown("left"))
@@ -22,6 +31,8 @@ public class Elephant extends Actor
         {
             eat();
         }
+
+        animateElephant();
     }
     
     public void eat()
@@ -37,5 +48,19 @@ public class Elephant extends Actor
     {
         World world = getWorld();
         world.removeObject(this);
+    }
+
+    public void animateElephant()
+    {
+        imageIndex = (imageIndex + 1) % elephantAnim.length;
+        setImage(elephantAnim[imageIndex]);
+    }
+
+    public void createAnimArray()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            elephantAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png");
+        }
     }
 }
