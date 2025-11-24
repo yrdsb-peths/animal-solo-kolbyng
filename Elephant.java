@@ -7,9 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elephant extends Actor {
 
-    private GreenfootImage[] elephantAnim= new GreenfootImage[8];
+    private GreenfootImage[] idleRightAnim= new GreenfootImage[8];
+    private GreenfootImage[] idleLeftAnim= new GreenfootImage[8];
     private GreenfootSound eatSound = new GreenfootSound("elephantcub.mp3");
     private int imageIndex = 0;
+    private String direction = "right";
 
     public Elephant() {
 
@@ -21,10 +23,12 @@ public class Elephant extends Actor {
 
         if (Greenfoot.isKeyDown("left")) {
 
+            direction = "left";
             move(-1);
         }
         if (Greenfoot.isKeyDown("right")) {
 
+            direction = "right";
             move(1);
         }
         if(isTouching(Apple.class)) {
@@ -52,8 +56,13 @@ public class Elephant extends Actor {
 
     public void animateElephant() {
         if (timer.millisElapsed() > 100) {
-            imageIndex = (imageIndex + 1) % elephantAnim.length;
-            setImage(elephantAnim[imageIndex]);
+            if (direction.equals("right")) {
+                imageIndex = (imageIndex + 1) % idleRightAnim.length;
+                setImage(idleRightAnim[imageIndex]);
+            } else {
+                imageIndex = (imageIndex + 1) % idleLeftAnim.length;
+                setImage(idleLeftAnim[imageIndex]);
+            }
             timer.mark();
         }
     }
@@ -62,7 +71,8 @@ public class Elephant extends Actor {
 
         for (int i = 0; i < 8; i++) {
 
-            elephantAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png");
+            idleRightAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png");
+            idleLeftAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png").mirrorHorizontally();
         }
     }
 }
