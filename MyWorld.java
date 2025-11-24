@@ -8,6 +8,7 @@ public class MyWorld extends World {
     private int score = 0;
     private Label scoreLabel;
     Elephant e;
+    SimpleTimer timer;
     public MyWorld() {
 
         super(600, 400, 1, false);
@@ -18,6 +19,9 @@ public class MyWorld extends World {
 
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
+
+        timer = new SimpleTimer();
+        timer.mark();
     }
     
     public void createApple() {

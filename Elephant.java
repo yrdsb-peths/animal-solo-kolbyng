@@ -51,9 +51,11 @@ public class Elephant extends Actor {
     }
 
     public void animateElephant() {
-
-        imageIndex = (imageIndex + 1) % elephantAnim.length;
-        setImage(elephantAnim[imageIndex]);
+        if (timer.millisElapsed() > 100) {
+            imageIndex = (imageIndex + 1) % elephantAnim.length;
+            setImage(elephantAnim[imageIndex]);
+            timer.mark();
+        }
     }
 
     public void createAnimArray() {
