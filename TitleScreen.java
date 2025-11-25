@@ -8,10 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-    public TitleScreen()
-    {    
+    public TitleScreen(){    
         super(600, 400, 1); 
         Label title = new Label("Hungry Elephant", 60);
         addObject(title, getWidth() / 2, getHeight() / 2);
+        Label instructions = new Label("Press space to start", 40);
+        addObject(instructions, getWidth() / 2, getHeight() / 2 + 50);
+    }
+
+    public void act() {
+        if (Greenfoot.isKeyDown("space")) {
+            Greenfoot.setWorld(new MyWorld());
+        }
     }
 }
