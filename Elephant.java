@@ -16,7 +16,7 @@ public class Elephant extends Actor {
     public Elephant() {
 
         createAnimArray();
-        setImage(elephantAnim[0]);
+        setImage(idleRightAnim[0]);
     }
 
     public void act() {
@@ -55,7 +55,9 @@ public class Elephant extends Actor {
     }
 
     public void animateElephant() {
-        if (timer.millisElapsed() > 100) {
+        MyWorld world = (MyWorld) getWorld();
+        SimpleTimer timer = world.getTimer();
+        if (timer.millisElapsed() >= 100) {
             if (direction.equals("right")) {
                 imageIndex = (imageIndex + 1) % idleRightAnim.length;
                 setImage(idleRightAnim[imageIndex]);
@@ -72,7 +74,8 @@ public class Elephant extends Actor {
         for (int i = 0; i < 8; i++) {
 
             idleRightAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png");
-            idleLeftAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png").mirrorHorizontally();
+            idleLeftAnim[i] = new GreenfootImage("elephant_idle/idle" + i + ".png");
+            idleLeftAnim[i].mirrorHorizontally();
         }
     }
 }

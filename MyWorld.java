@@ -47,4 +47,9 @@ public class MyWorld extends World {
 
         return e;
     }
+
+    public SimpleTimer getTimer() {
+
+        return timer;
+    }
 }
