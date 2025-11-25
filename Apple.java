@@ -7,9 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Apple extends Actor {
 
-    public void act() {
+    private int speed = 1;
 
-        setLocation(getX(), getY() + 1);
+    public void act() {
+        setSpeed();
+        setLocation(getX(), getY() + speed);
 
         MyWorld myWorld = (MyWorld) getWorld();
         World world = getWorld();
@@ -20,5 +22,10 @@ public class Apple extends Actor {
             Elephant elephant = myWorld.getElephant();
             elephant.remove();
         }
+    }
+
+    public void setSpeed() {
+        MyWorld myWorld = (MyWorld) getWorld();
+        speed = myWorld.getLevel();
     }
 }

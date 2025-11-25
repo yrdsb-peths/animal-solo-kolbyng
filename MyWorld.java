@@ -6,6 +6,7 @@ import greenfoot.*;
  */
 public class MyWorld extends World {
     private int score = 0;
+    private int level = 1;
     private Label scoreLabel;
     Elephant e;
     SimpleTimer timer;
@@ -23,19 +24,22 @@ public class MyWorld extends World {
         timer = new SimpleTimer();
         timer.mark();
     }
-    
+
     public void createApple() {
 
         Apple apple = new Apple();
         addObject(apple, Greenfoot.getRandomNumber(600), 0);
     }
-    
+
     public void increaseScore() {
 
         score++;
         scoreLabel.setValue(score);
+        if (score % 5 == 0) {
+            level++;
+        }
     }
-    
+
     public void gameOver() {
 
         Label gameOverLabel = new Label("Game over", 100);
@@ -51,5 +55,9 @@ public class MyWorld extends World {
     public SimpleTimer getTimer() {
 
         return timer;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }

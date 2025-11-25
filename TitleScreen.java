@@ -14,6 +14,8 @@ public class TitleScreen extends World
         addObject(title, getWidth() / 2, getHeight() / 2);
         Label instructions = new Label("Press space to start", 40);
         addObject(instructions, getWidth() / 2, getHeight() / 2 + 50);
+        Label instructions2 = new Label("Press \u2190 and \u2192 to move", 40);
+        addObject(instructions2, getWidth() / 2, getHeight() / 2 + 100);
     }
 
     public void act() {
