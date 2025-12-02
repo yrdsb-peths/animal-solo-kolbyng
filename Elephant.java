@@ -9,7 +9,7 @@ public class Elephant extends Actor {
 
     private GreenfootImage[] idleRightAnim= new GreenfootImage[8];
     private GreenfootImage[] idleLeftAnim= new GreenfootImage[8];
-    private GreenfootSound eatSound = new GreenfootSound("elephantcub.mp3");
+    private GreenfootSound eatSound = new GreenfootSound("sounds/elephantcub.mp3");
     private int imageIndex = 0;
     private String direction = "right";
 
@@ -24,12 +24,12 @@ public class Elephant extends Actor {
         if (Greenfoot.isKeyDown("left")) {
 
             direction = "left";
-            move(-1);
+            move(-5);
         }
         if (Greenfoot.isKeyDown("right")) {
 
             direction = "right";
-            move(1);
+            move(5);
         }
         if(isTouching(Apple.class)) {
 
@@ -45,6 +45,7 @@ public class Elephant extends Actor {
         removeTouching(Apple.class);
         world.createApple();
         world.increaseScore();
+        eatSound.setVolume(100);
         eatSound.play();
     }
 
